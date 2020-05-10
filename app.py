@@ -48,10 +48,10 @@ def editProduct(product_name):
         productsFound[0]['price'] = request.json['price']
         productsFound[0]['quantity'] = request.json['quantity']
         return jsonify({
-            'message': 'Product Updated',
+            'message': 'Producto Modificado Correctamente',
             'product': productsFound[0]
         })
-    return jsonify({'message': 'Product Not found'})
+    return jsonify({'message': 'Producto No encontrado'})
 
 # DELETE Data Route
 @app.route('/products/<string:product_name>', methods=['DELETE'])
@@ -60,7 +60,7 @@ def deleteProduct(product_name):
     if len(productsFound) > 0:
         products.remove(productsFound[0])
         return jsonify({
-            'message': 'Product Deleted',
+            'message': 'Producto Borrado',
             'products': products
         })
 
