@@ -18,11 +18,15 @@ def getProducts():
 
 @app.route('/products/<string:product_name>')
 def getProduct(product_name):
-    productsFound = [
-        product for product in products if product['name'] == product_name.lower()]
+    
+    for product in products:
+        if product['name'] == product_name.lower():
+            productsFound=product
+        #fijaros me va a devolver un diccionario
+    print(type(productsFound))
     if (len(productsFound) > 0):
-        return jsonify({'product': productsFound[0]})
-    return jsonify({'message': 'Product Not found'})
+        return jsonify({'product': productsFound})
+    return jsonify({'message': 'Producto no encontrdo'})
 
 # Create Data Routes
 @app.route('/products', methods=['POST'])
