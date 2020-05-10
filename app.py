@@ -13,6 +13,7 @@ def ping():
 @app.route('/products')
 def getProducts():
     # return jsonify(products)
+    #jsonify devuelve una respueta en formato JSON
     return jsonify({'products': products})
 
 
