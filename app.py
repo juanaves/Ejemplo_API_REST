@@ -46,7 +46,10 @@ def addProduct():
 # Update Data Route
 @app.route('/products/<string:product_name>', methods=['PUT'])
 def editProduct(product_name):
-    productsFound = [product for product in products if product['name'] == product_name]
+    for product in products:
+        if product['name'] == product_name.lower():
+            productsFound=product
+    #productsFound = [product for product in products if product['name'] == product_name]
     if (len(productsFound) > 0):
         productsFound[0]['name'] = request.json['name']
         productsFound[0]['price'] = request.json['price']
@@ -60,7 +63,10 @@ def editProduct(product_name):
 # DELETE Data Route
 @app.route('/products/<string:product_name>', methods=['DELETE'])
 def deleteProduct(product_name):
-    productsFound = [product for product in products if product['name'] == product_name]
+    for product in products:
+        if product['name'] == product_name.lower():
+            productsFound=product
+    #productsFound = [product for product in products if product['name'] == product_name]
     if len(productsFound) > 0:
         products.remove(productsFound[0])
         return jsonify({
