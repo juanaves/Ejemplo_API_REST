@@ -2,7 +2,9 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-from products import products
+from products import products # importa el diccionario  para luego leer, añadir, modificar, borrar
+#ten en cuenta que el diccionario esta en otro fichero aparte sino lo importara, 
+#no podria tener acceso a el
 
 # Testing Route
 @app.route('/ping', methods=['GET'])
@@ -10,6 +12,7 @@ def ping():
     return jsonify({'response': 'pong!'})
 
 # Get Data Routes
+#@app.route('/products',methods=['GET']) por defecto es el metodo get por eso NO SE PONE
 @app.route('/products')
 def getProducts():
     # return jsonify(products)
@@ -35,10 +38,10 @@ def addProduct():
     new_product = {
         'name': request.json['name'],
         'price': request.json['price'],
-        'quantity': 10
+        'quantity': request.json['quantity']
     }
     products.append(new_product)
-    return jsonify({'products': products})
+    return jsonify({'mensaje':'Producto agregado correctamente','products': products})
 
 # Update Data Route
 @app.route('/products/<string:product_name>', methods=['PUT'])
