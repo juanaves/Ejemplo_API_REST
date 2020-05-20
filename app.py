@@ -6,6 +6,9 @@ from products import products # importa el diccionario  para luego leer, añadir
 #ten en cuenta que el diccionario esta en otro fichero aparte sino lo importara, 
 #no podria tener acceso a el
 
+@app.route("/")
+def saludo():
+    print("Bienvenido a mi API REST")
 # Testing Route
 @app.route('/ping', methods=['GET'])
 def ping():
