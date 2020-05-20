@@ -8,7 +8,7 @@ from products import products # importa el diccionario  para luego leer, añadir
 
 @app.route("/")
 def saludo():
-    print("Bienvenido a mi API REST")
+    return("Bienvenido a mi API REST")
 # Testing Route
 @app.route('/ping', methods=['GET'])
 def ping():
